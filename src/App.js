@@ -1,19 +1,32 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import React, {Component} from 'react';
+import {Provider} from 'react-redux';
+import store from './store/new_store';
 
-function getCurrentDate()
+function edit_person()
 {
-  var date = new Date();
-  return date.toDateString();
+    store.dispatch({type:'edit_person'});
+}
+function edit_game()
+{
+    store.dispatch({type:'edit_game'});
 }
 
-export default class App extends Component {
-  render() {
-    return(
-      <React.Fragment>
-         <h1>Hello world!! {getCurrentDate()}</h1>
-      </React.Fragment>
-    );
-  }
+
+class App extends Component {
+    render() {
+        return ( 
+            <div>
+             <h1> {store.getState().person.name} <button onClick={edit_person}> update </button> </h1>
+             <h1> {store.getState().sports.game} <button onClick={edit_game}> Update </button></h1>
+            </div>
+
+        );
+    }
 }
+export default App;
+
+
+// 1 = create reducer
+//2 create store use reducer
+//3= then subscribe
+//4 == dispatch when action
