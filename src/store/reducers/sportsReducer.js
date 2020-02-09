@@ -1,6 +1,8 @@
+import {update_value} from '../actions/Action';
+
 const sportsReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'update':
+        case update_value:
             return {
                 game: 'cricket'
             }
